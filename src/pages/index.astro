@@ -1,81 +1,108 @@
 ---
+import 'aos/dist/aos.css';
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
----
+import Footer from '../components/Footer.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
+import { Image } from 'astro:assets';
+import Portait from '../portrait.jpg';
+
+import CharbotLogo from "../charbot-icon.jpg";
+import FourPlayerChessLogo from "../four-player-chess-icon.png";
+---
+<Layout title="Jareth Gomes - Software Developer">
+    <script>
+        import AOS from 'aos';
+        AOS.init();
+    </script>
+	<main class="mr-10 ml-10 flex h-screen flex-col items-center justify-center text-center" data-aos="fade-up" data-aos-duration="1000">
+            <h1 class="text-center text-8xl m-10 font-medium">Hello! I'm <span class="text-gradient">Jareth</span></h1>
+            <p class="text-center text-4xl">
+                Software Engineer and Developer
+            </p>
 	</main>
+    <section id="about" class="flex h-screen flex-col items-center justify-center text-center lg:flex-row ml-32 mr-32">
+        <div class="flex flex-col items-center justify-center" data-aos="fade-right" data-aos-duration="1000">
+            <h2 class="text-4xl text-teal-500 dark:text-teal-400 m-10">
+                A bit about myself
+            </h2>
+            <Image src={Portait} alt="A protrait of Jareth" width={300}/>
+        </div>
+        <p class="text-xl" data-aos="fade-up" data-aos-duration="1000">
+            I am a full stack developer from Chicago that specializes in backends and cybersecurity.
+            I graduted from the University of Illinois with a Bachelors in Computer Science.
+        </p>
+    </section>
+    <section id="projects" class="flex flex-col h-screen items-center justify-center text-center ml-32 mr-32">
+        <h2 class="text-4xl text-teal-500 dark:text-teal-400 m-10">
+            Projects I've made
+        </h2>
+        <div class="flex flex-wrap items-center justify-center gap-2 text-center lg:flex-row">
+            <ProjectCard projectName={"Four player chess"} projectImgSrc={FourPlayerChessLogo} synopsis={"A client-server game created in Java"} data-aos="fade-n-flip-left" href="/projects/four-player-chess"/>
+            <ProjectCard projectName={"CharBot"} projectImgSrc={CharbotLogo} synopsis={"A Discord bot written using discord.js that roast users on command"} data-aos="fade-n-flip-left" data-aos-delay="100" href="https://github.com/Nydauron/CharBot" target="_blank"/>
+            <ProjectCard projectName={"playing-cards"} synopsis={"A poker evaluation library written in Rust"} data-aos="fade-n-flip-left" data-aos-delay="200" href="https://github.com/Nydauron/" target="_blank"/>
+        </div>
+    </section>
+    <div class="h-screen flex flex-col items-center justify-center">
+        <h2 id="contact" class="text-4xl text-center text-teal-400 mb-12">My contact information</h2>
+        <Footer />
+    </div>
 </Layout>
 
+<style type="scss">
+    [data-aos="fade-n-flip-left"] {
+        opacity: 0;
+        transition-property: transform, opacity;
+
+        &.aos-animate {
+            opacity: 1;
+        }
+
+        @media screen and (min-width: 768px) {
+            transform: scaleX(0);
+
+            &.aos-animate {
+                transform: scaleX(1);
+            }
+        }
+    }
+</style>
 <style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
+    .text-gradient {
+        background-image: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 400%;
+        background-position: 0%;
+    }
+    @media (prefers-color-scheme: dark) {
+        .text-gradient {
+            background-image: var(--accent-gradient-dark);
+        }
+    }
+    .instructions {
+        line-height: 1.6;
+        margin: 1rem 0;
+        border: 1px solid rgba(var(--accent), 25%);
+        background-color: white;
+        padding: 1rem;
+        border-radius: 0.4rem;
+    }
+    .instructions code {
+        font-size: 0.875em;
+        font-weight: bold;
+        background: rgba(var(--accent), 12%);
+        color: rgb(var(--accent));
+        border-radius: 4px;
+        padding: 0.3em 0.45em;
+    }
+    .instructions strong {
+        color: rgb(var(--accent));
+    }
+    .link-card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+        gap: 1rem;
+        padding: 0;
+    }
 </style>

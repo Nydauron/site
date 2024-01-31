@@ -1,0 +1,59 @@
+---
+import { Icon } from 'astro-icon/components';
+import {Astronav, MenuItems, MenuIcon} from 'astro-navbar';
+
+const navitems = [
+    {
+        title: "Home",
+        path: "/",
+    },
+    {
+        title: "About",
+        path: "/#about",
+    },
+    {
+        title: "Projects",
+        path: "/#projects",
+    },
+]
+---
+
+<nav class="backdrop-blur pl-8 pr-8 text-xl sticky top-0 z-10 flex flex-col w-full items-center justify-between md:flex-row">
+    <Astronav>
+        <div class="p-2 flex w-full items-center justify-between gap-3 md:w-auto">
+            <a href="/Gomes_Resume.pdf" target="_blank">
+                <button class="p-2 rounded-md border-4 border-black dark:border-white hover:border-teal-400 dark:hover:bg-gray-900 hover:bg-gray-200 transition-colors">
+                    My Resume
+                </button>
+            </a>
+            <div class="block md:hidden">
+                <MenuIcon class="h-8 w-8 text-black dark:text-white" />
+            </div>
+        </div>
+        <MenuItems class="hidden md:flex p-2">
+            <ul class="flex flex-col md:flex-row md:gap-3 items-center">
+                {
+                    navitems.map((item) => (
+                        <>
+                            <li>
+                                <a aria-label="Navigation link" href={item.path} class="text-black dark:text-white hover:text-teal-500 dark:hover:text-teal-400 transition-colors">
+                                    {item.title}
+                                </a>
+                            </li>
+                        </>
+                    ))
+                }
+                <li>
+                    <a aria-label="Navigation link" href="https://github.com/Nydauron" target="_blank" class="text-black dark:text-white hover:text-purple-500 transition-colors">
+                        <Icon name="mdi:github" height={32} width={32}/>
+                    </a>
+                </li>
+                <li>
+                    <a aria-label="Navigation link" href="https://linkedin.com/in/jarethgomes" target="_blank" class="text-black dark:text-white hover:text-blue-500 transition-colors">
+                        <Icon name="mdi:linkedin" height={32} width={32}/>
+                    </a>
+                </li>
+            </ul>
+        </MenuItems>
+    </Astronav>
+</nav>

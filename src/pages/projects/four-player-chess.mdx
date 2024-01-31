@@ -1,0 +1,111 @@
+---
+layout: "../../layouts/ProjectLayout.astro"
+title: 'Four Player Chess'
+---
+
+# Four Player Chess (Java)
+<span class="post-date">Posted on 04/08/17. Updated on 11/08/17.</span>
+
+## Rules
+
+### Objective
+
+Be the last king standing on the board.
+
+### How to Play
+- All the pieces move like how they normally would in a regular game of chess.
+- White starts the game off, then orange, black, and finally, blue.
+- When you king is in check when it is your turn,  you must get your king out of check. If your king can't get out of check, your turn will be skipped.
+- Only when your king gets captured, you are eliminated from the game. (Yes, you can un-checkmate someone <span style="font-family: Arial, sans-serif">( ͡~ ͜ʖ ͡°)</span> )
+- En Passant can be done any player; the pawn moves to the space where the captured pawn passed.
+- Promotion happens when a pawn has no squares in front of it. You may promote it to anything except a king or a pawn.
+
+## How to Connect to the Server
+1. If you are going to have friends outside your network connect to your server and you have a firewall, you will need to port forward the 2222 port. (This is the default port)
+2. Load up the server and hit connect. Don't change the port number unless you know what you are doing. It will then show you your internal IP address.
+3. Load up the client and type in the internal IP address. Anyone who wants to connect to the server that is inside your network must use the internal IP.
+4. If your friends want to connect, they must use your external IP address which can be found&nbsp;<a title="External IP" href="https://www.whatismypublicip.com/" target="_blank" rel="noreferrer noopener">here</a>.
+5. Once all four players are connected and are ready, start playing!
+
+## Changelog
+
+### v1.5.1 STABLE (11/08/17):
+
+##### Fixed bugs
+- A lot of bugs that were never supposed to be there were patched.
+
+### v1.5 (05/15/17):
+
+#### Features added
+
+##### Server
+- FEN Reader added on server.
+- FEN generator added on server.
+- Reset game button added on server.
+
+##### Client
+- GUI enhancements made.
+
+#### Fixed bugs
+- Server may not respond sometimes due to threads being overloaded.
+
+### v1.4 (05/10/17):
+
+#### Features added
+
+##### Server
+- Added official icon to program.
+
+##### Client
+- Added official icon to program.
+- Added sounds.
+
+### v1.3 (05/01/17)
+
+#### Features added
+
+##### Server
+-Added GUI components for FEN reader. (Will be added in later version)
+
+#####Client
+- Added last move highlight.
+
+#### Fixed bugs
+- Clients with an identical username will respond to any messages directed to that username instead of just one client responding. Changed so that the color represents the user instead of the username.
+
+### v1.0 (04/18/17):
+
+#### Features
+
+##### Server
+- All chess rules needed to play are fully working.
+- All pieces move appropriately. No illegal moves can be made.
+- Ability to castle added.
+- Ability to capture by en passant added.
+- Pawn promotion added.
+- Checking for check added.
+- Legal move checking added.
+- King elimination added.
+- Checking for mate added.
+- Check for stalemate added.
+- Check for three-fold repetition added.
+- Check for fifty move rule added.
+- Check for insufficient amount of pieces added.
+- Spectator mode added.
+- Internal IP display addded.
+- Console log added.
+
+##### Client
+- IP field added.
+- Username field added.
+- Connect and disconnect button added.
+- Ready button added.
+- Board reader added so that server can send an updated board.
+
+## Downloads
+- v1.5.1 STABLE: <a href="/download/four-player-chess/Four%20Player%20Chess%20v1.5.1%20STABLE.zip" download>zip</a>
+- v1.5: <a href="/download/four-player-chess/Four%20Player%20Chess%20v1.5.zip" download>zip</a>
+- v1.4: <a href="/download/four-player-chess/Four%20Player%20Chess%20v1.4.zip" download>zip</a>
+- v1.3: <a href="/download/four-player-chess/Four%20Player%20Chess%20v1.3.zip" download>zip</a>
+- v1.1: <a href="/download/four-player-chess/Four%20Player%20Chess%20v1.1.zip" download>zip</a>
+- v1.0: <a href="/download/four-player-chess/Four%20Player%20Chess%20v1.0.zip" download>zip</a>

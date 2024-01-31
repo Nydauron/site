@@ -1,0 +1,16 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+<footer class="flex flex-col items-center justify-center py-8">
+    <div class="flex flex-row items-center justify-center gap-3">
+        <a href="https://github.com/Nydauron" target="_blank" rel="noopener" aria-label="github" class="text-black dark:text-white hover:text-purple-500 transition-colors">
+            <Icon name="mdi:github" height={48} width={48}/>
+        </a>
+        <a href="https://linkedin.com/in/jarethgomes" target="_blank" rel="noopener" aria-label="linkedin" class="text-black dark:text-white hover:text-blue-500 transition-colors">
+            <Icon name="mdi:linkedin" height={48} width={48} />
+        </a>
+    </div>
+    <p class="pt-2">
+        This site is made with {Astro.generator} and supports dark mode. Source code can be viewed <a href="https://github.com/Nydauron/site" target="_blank" class="underline">on GitHub</a>!
+    </p>
+</footer>

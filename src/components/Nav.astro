@@ -31,7 +31,7 @@ const navitems = [
             </div>
         </div>
         <MenuItems class="hidden md:flex p-2">
-            <ul class="flex flex-col md:flex-row md:gap-3 items-center">
+            <ul class="flex flex-col md:flex-row gap-3 items-center">
                 {
                     navitems.map((item) => (
                         <>
@@ -43,12 +43,10 @@ const navitems = [
                         </>
                     ))
                 }
-                <li>
+                <li class="flex flex-row gap-3">
                     <a aria-label="Navigation link" href="https://github.com/Nydauron" target="_blank" class="text-black dark:text-white hover:text-purple-500 transition-colors">
                         <Icon name="mdi:github" height={32} width={32}/>
                     </a>
-                </li>
-                <li>
                     <a aria-label="Navigation link" href="https://linkedin.com/in/jarethgomes" target="_blank" class="text-black dark:text-white hover:text-blue-500 transition-colors">
                         <Icon name="mdi:linkedin" height={32} width={32}/>
                     </a>

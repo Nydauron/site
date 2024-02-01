@@ -9,6 +9,82 @@ import Portait from '../portrait.jpg';
 
 import CharbotLogo from "../charbot-icon.jpg";
 import FourPlayerChessLogo from "../four-player-chess-icon.png";
+import type { ImageMetadata } from 'astro';
+
+type ProjectTag = "discordjs"
+    | "java"
+    | "javax"
+    | "javascript"
+    | "library"
+    | "network"
+    | "poker"
+    | "rust"
+
+type Project = {
+    name: string,
+    image?: ImageMetadata,
+    synopsis: string,
+    tags: ProjectTag[],
+    links: ProjectLink[]
+};
+
+type ProjectLink = {
+    type: "github",
+    repo: string
+} | {
+    type: "general",
+    href: string,
+    icon?: ImageMetadata,
+};
+
+const getNormalizedLink = (link: ProjectLink): string => {
+    switch (link.type) {
+        case 'github':
+            //FIX: Not as secure as i'd like it to be ...
+            return `https://github.com/{link.repo}`;
+        default:
+            return link.href;
+    }
+};
+
+const projects: Project[] = [
+    {
+        name: "playing-cards",
+        image: undefined,
+        synopsis: "A poker evaluation library written in Rust",
+        tags: ["rust", "poker", "library"],
+        links: [
+            {
+                type: "github",
+                repo: "Nydauron/playing-cards",
+            }
+        ]
+    },
+    {
+        name: "CharBot",
+        image: CharbotLogo,
+        synopsis: "A Discord bot written using discord.js that roast users on command",
+        tags: ["javascript", "discordjs"],
+        links: [
+            {
+                type: "github",
+                repo: "Nydauron/CharBot",
+            }
+        ]
+    },
+    {
+        name: "Four player chess",
+        image: FourPlayerChessLogo,
+        synopsis: "A client-server game created in Java",
+        tags: ["java", "javax", "network"],
+        links: [
+            {
+                type: "github",
+                repo: "Nydauron/CharBot",
+            }
+        ]
+    },
+];
 ---
 <Layout title="Jareth Gomes - Software Developer">
     <script>
@@ -38,9 +114,9 @@ import FourPlayerChessLogo from "../four-player-chess-icon.png";
             Projects I've made
         </h2>
         <div class="flex flex-wrap items-center justify-center gap-2 text-center lg:flex-row">
-            <ProjectCard projectName={"playing-cards"} synopsis={"A poker evaluation library written in Rust"} data-aos="fade-n-flip-left" data-aos-delay="200" href="https://github.com/Nydauron/" target="_blank"/>
-            <ProjectCard projectName={"CharBot"} projectImgSrc={CharbotLogo} synopsis={"A Discord bot written using discord.js that roast users on command"} data-aos="fade-n-flip-left" data-aos-delay="100" href="https://github.com/Nydauron/CharBot" target="_blank"/>
-            <ProjectCard projectName={"Four player chess"} projectImgSrc={FourPlayerChessLogo} synopsis={"A client-server game created in Java"} data-aos="fade-n-flip-left" href="/projects/four-player-chess"/>
+            {projects.map((project, idx) => (
+                <ProjectCard projectName={project.name} projectImgSrc={project.image} synopsis={project.synopsis} href={getNormalizedLink(project.links[0])} target="_blank" data-aos='fade-n-flip-left' data-aos-delay={(100 * idx).toString()} />
+            ))}
         </div>
     </section>
     <div class="h-screen flex flex-col items-center justify-center">

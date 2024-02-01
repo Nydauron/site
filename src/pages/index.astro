@@ -12,56 +12,111 @@ import FourPlayerChessLogo from "../four-player-chess-icon.png";
 import PiBotLogo from "../pi-bot-logo.png";
 import HackIllinois2023Logo from "../hackillinois-2023.jpg";
 
-const projects: Project[] = [
-    {
-        name: "playing-cards",
-        image: undefined,
-           dateRange: {
-           start: "Aug 2022",
-           end: null,
-        },
-        synopsis: "A poker evaluation library written in Rust",
-        tags: ["rust", "poker", "library"],
-        links: [
+const projects: {
+    personal: Project[],
+    other: Project[]
+} = {
+        personal: [
             {
-                type: "github",
-                repo: "Nydauron/playing-cards",
+                name: "playing-cards",
+                image: undefined,
+                dateRange: {
+                    start: "Aug 2022",
+                    end: null,
+                },
+                synopsis: "A poker evaluation library written in Rust",
+                tags: ["rust", "poker", "library"],
+                links: [
+                    {
+                        type: "github",
+                        repo: "Nydauron/playing-cards",
+                    },
+                ],
+            },
+            {
+                name: "CharBot",
+                dateRange: {
+                    start: "Jul 2018",
+                    end: "Aug 2019",
+                },
+                image: CharbotLogo,
+                synopsis: "A Discord bot written using discord.js that roast users on command",
+                tags: ["javascript", "bot", "discordjs"],
+                links: [
+                    {
+                        type: "github",
+                        repo: "Nydauron/CharBot",
+                    },
+                ],
+            },
+            {
+                name: "Four player chess",
+                image: FourPlayerChessLogo,
+                dateRange: {
+                    start: "Feb 2017",
+                    end: "May 2017",
+                },
+                synopsis: "A client-server game created in Java",
+                tags: ["java", "javax", "network"],
+                links: [
+                    {
+                        type: "internal",
+                        path: "/projects/four-player-chess",
+                    },
+                ],
+            },
+        ],
+    other: [
+            {
+                name: "JsSpim",
+                image: undefined,
+                dateRange: {
+                    start: "Jan 2022",
+                    end: "May 2023",
+                },
+                synopsis: "A MIPS simulator within the browser using WASM written in C++ using the SPIM library",
+                tags: ["c++", "wasm", "mips", "assembly", "simulation"],
+                links: [
+                    {
+                        type: "github",
+                        repo: "cs233/JsSpim",
+                    },
+                ],
+            },
+            {
+                name: "HackIllinois API",
+                image: HackIllinois2023Logo,
+                dateRange: {
+                    start: "Oct 2021",
+                    end: "Feb 2023",
+                },
+                synopsis: "A Go microservice API supporting the HackIllinois website, iOS, and Android apps",
+                tags: ["go", "api", "aws", "mongodb"],
+                links: [
+                    {
+                        type: "github",
+                        repo: "cbrxyz/pi-bot",
+                    },
+                ],
+            },
+            {
+                name: "pi-bot",
+                image: PiBotLogo,
+                dateRange: {
+                    start: "Sept 2020",
+                    end: "Jul 2021",
+                },
+                synopsis: "Scioly.org's resident Discord bot written in Discord.py",
+                tags: ["python", "bot", "discordpy"],
+                links: [
+                    {
+                        type: "github",
+                        repo: "cbrxyz/pi-bot",
+                    }
+                ],
             }
         ]
-    },
-    {
-        name: "CharBot",
-        image: CharbotLogo,
-        dateRange: {
-           start: "Jul 2018",
-           end: "Aug 2019",
-        },
-        synopsis: "A Discord bot written using discord.js that roast users on command",
-        tags: ["javascript", "discordjs"],
-        links: [
-            {
-                type: "github",
-                repo: "Nydauron/CharBot",
-            }
-        ]
-    },
-    {
-        name: "Four player chess",
-        image: FourPlayerChessLogo,
-        dateRange: {
-            start: "Feb 2017",
-            end: "May 2017",
-        },
-        synopsis: "A client-server game created in Java",
-        tags: ["java", "javax", "network"],
-        links: [
-            {
-                type: "github",
-                repo: "Nydauron/CharBot",
-            }
-        ]
-    },
-];
+    };
 ---
 <Layout title="Jareth Gomes - Software Developer">
     <script>
@@ -91,10 +146,18 @@ const projects: Project[] = [
             Projects I've made
         </h2>
         <div class="flex flex-wrap justify-center gap-2 text-center lg:flex-row">
-            {projects.map((project, idx) => (
-                <ProjectCard projectName={project.name} projectImgSrc={project.image} synopsis={project.synopsis} links={project.links} tags={project.tags} dateRange={project.dateRange} data-aos='fade-n-flip-left' data-aos-delay={(100 * idx).toString()} />
-            ))}
-        </div>
+             {projects.personal.map((project, idx) => (
+                 <ProjectCard projectName={project.name} projectImgSrc={project.image} synopsis={project.synopsis} links={project.links} tags={project.tags} dateRange={project.dateRange} data-aos='fade-n-flip-left' data-aos-delay={(100 * idx).toString()} />
+             ))}
+         </div>
+         <h2 class="text-4xl text-teal-500 dark:text-teal-400 m-10" data-aos="fade-up">
+             Other open source projects I've worked on
+         </h2>
+         <div class="flex flex-wrap justify-center gap-2 text-center lg:flex-row">
+             {projects.other.map((project, idx) => (
+                 <ProjectCard projectName={project.name} projectImgSrc={project.image} synopsis={project.synopsis} links={project.links} tags={project.tags} dateRange={project.dateRange} data-aos='fade-n-flip-left' data-aos-delay={(100 * idx).toString()} />
+             ))}
+         </div>
     </section>
     <div class="h-screen flex flex-col items-center justify-center">
         <h2 id="contact" class="text-4xl text-center text-teal-400">My contact information</h2>

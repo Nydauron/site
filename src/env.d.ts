@@ -2,14 +2,26 @@
 /// <reference types="astro/client" />
 
 type ProjectTag =
+  | "assembly"
+  | "api"
+  | "aws"
+  | "bot"
+  | "c++"
   | "discordjs"
+  | "discordpy"
+  | "go"
   | "java"
   | "javax"
   | "javascript"
   | "library"
+  | "mips"
+  | "mongodb"
   | "network"
   | "poker"
-  | "rust";
+  | "python"
+  | "rust"
+  | "simulation"
+  | "wasm";
 
 type Project = {
   name: string;

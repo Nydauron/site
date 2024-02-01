@@ -2,10 +2,16 @@
 import { getImage } from 'astro:assets';
 import defaultProjectDarkImage from "../rectangle-code-dark-mode.svg";
 import type { ImageMetadata } from 'astro';
+import { getNormalizedLink } from '../utils/links';
+import { getDateRangeString } from '../utils/dateRange';
+import ProjectLinkIcon from "./ProjectLinkIcon.astro";
 
-interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
+interface Props extends astroHTML.JSX.HTMLAttributes {
     projectName: string,
     projectImgSrc?: string | ImageMetadata,
+    links: ProjectLink[],
+    tags: ProjectTag[],
+    dateRange: DateRange,
     synopsis: string,
     "data-aos"?: string,
     "data-aos-duration"?: string,
@@ -14,18 +20,36 @@ interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
     "data-aos-anchor-placement"?: string,
 };
 
-const { projectName, projectImgSrc, synopsis, ...props} = Astro.props;
+const { projectName, projectImgSrc, synopsis, links, tags, dateRange, ...props} = Astro.props;
 const projectImg = projectImgSrc !== undefined ? await getImage({src: projectImgSrc}) : null;
 ---
-<a {...props}>
-    <article class="w-72 bg-slate-100 dark:bg-slate-950 backdrop-blur rounded-lg border shadow-md shadow-gray-400 overflow-hidden">
-        <h2 class="text-2xl p-2 font-bold">{projectName}</h2>
+<article {...props} class={`${props.class ? `${props.class} `: ""}w-72 flex flex-col justify-between gap-4 bg-slate-100 dark:bg-slate-950 backdrop-blur rounded-lg border shadow-md shadow-gray-400 overflow-hidden`}>
+    <div class="pt-2 flex flex-col justify-start gap-2">
+        <h2 class="text-2xl font-bold">{projectName}</h2>
         <div class="relative">
-            <img class="rounded-lg backdrop-blur-2xl bg-gray-800" src={projectImg?.src ?? defaultProjectDarkImage.src} alt={null}/>
+            <div class="flex justify-center items-center backdrop-blur-2xl bg-gray-800 aspect-square max-h-full">
+                <img class="aspect-auto" src={projectImg?.src ?? defaultProjectDarkImage.src} alt={null}/>
+            </div>
             <p class="absolute w-full text-white text-center text-lg top-1/2 px-4 py-2 opacity-0">{synopsis}</p>
         </div>
-    </article>
-</a>
+    </div>
+    <div class="px-2 pb-2 flex flex-col justify-start gap-2">
+        {tags.length > 0 ?
+            <div class="flex flex-row items-center justify-start flex-wrap gap-2">
+                {tags.map((tag) => (<div class="p-0.5 rounded border-2 border-gray-500">{tag}</div>))}
+            </div> :
+            <></>
+        }
+        <div class="flex flex-row items-center justify-between">
+            <div class="flex flex-row items-center justify-start flex-wrap gap-2">
+                {links.map((link) => (<a class="block w-fit" href={getNormalizedLink(link)} target={link.type === "internal" ? "_self" : "_blank"}><ProjectLinkIcon link={link}/></a>))}
+            </div>
+            <div class="text-gray-800 dark:text-gray-300">
+                {getDateRangeString(dateRange)}
+            </div>
+        </div>
+    </div>
+</article>
 <style>
 article p {
     transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1), transform 150ms cubic-bezier(0.4, 0, 0.2, 1);

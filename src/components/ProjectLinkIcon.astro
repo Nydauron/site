@@ -1,0 +1,16 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+    link: ProjectLink
+}
+const {link} = Astro.props;
+const width = 48;
+const height = width;
+---
+{(link.type === "github") ?
+    (<Icon name="mdi:github" height={height} width={width} />) :
+    (link.type === "internal") ?
+    (<Icon name="mdi:link-variant" height={height} width={width} />) :
+    (<Icon name="mdi:open-in-new" height={height} width={width} />)
+}

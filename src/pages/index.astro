@@ -9,48 +9,17 @@ import Portait from '../portrait.jpg';
 
 import CharbotLogo from "../charbot-icon.jpg";
 import FourPlayerChessLogo from "../four-player-chess-icon.png";
-import type { ImageMetadata } from 'astro';
-
-type ProjectTag = "discordjs"
-    | "java"
-    | "javax"
-    | "javascript"
-    | "library"
-    | "network"
-    | "poker"
-    | "rust"
-
-type Project = {
-    name: string,
-    image?: ImageMetadata,
-    synopsis: string,
-    tags: ProjectTag[],
-    links: ProjectLink[]
-};
-
-type ProjectLink = {
-    type: "github",
-    repo: string
-} | {
-    type: "general",
-    href: string,
-    icon?: ImageMetadata,
-};
-
-const getNormalizedLink = (link: ProjectLink): string => {
-    switch (link.type) {
-        case 'github':
-            //FIX: Not as secure as i'd like it to be ...
-            return `https://github.com/{link.repo}`;
-        default:
-            return link.href;
-    }
-};
+import PiBotLogo from "../pi-bot-logo.png";
+import HackIllinois2023Logo from "../hackillinois-2023.jpg";
 
 const projects: Project[] = [
     {
         name: "playing-cards",
         image: undefined,
+           dateRange: {
+           start: "Aug 2022",
+           end: null,
+        },
         synopsis: "A poker evaluation library written in Rust",
         tags: ["rust", "poker", "library"],
         links: [
@@ -63,6 +32,10 @@ const projects: Project[] = [
     {
         name: "CharBot",
         image: CharbotLogo,
+        dateRange: {
+           start: "Jul 2018",
+           end: "Aug 2019",
+        },
         synopsis: "A Discord bot written using discord.js that roast users on command",
         tags: ["javascript", "discordjs"],
         links: [
@@ -75,6 +48,10 @@ const projects: Project[] = [
     {
         name: "Four player chess",
         image: FourPlayerChessLogo,
+        dateRange: {
+            start: "Feb 2017",
+            end: "May 2017",
+        },
         synopsis: "A client-server game created in Java",
         tags: ["java", "javax", "network"],
         links: [
@@ -113,9 +90,9 @@ const projects: Project[] = [
         <h2 class="text-4xl text-teal-500 dark:text-teal-400 m-10" data-aos="fade-up">
             Projects I've made
         </h2>
-        <div class="flex flex-wrap items-center justify-center gap-2 text-center lg:flex-row">
+        <div class="flex flex-wrap justify-center gap-2 text-center lg:flex-row">
             {projects.map((project, idx) => (
-                <ProjectCard projectName={project.name} projectImgSrc={project.image} synopsis={project.synopsis} href={getNormalizedLink(project.links[0])} target="_blank" data-aos='fade-n-flip-left' data-aos-delay={(100 * idx).toString()} />
+                <ProjectCard projectName={project.name} projectImgSrc={project.image} synopsis={project.synopsis} links={project.links} tags={project.tags} dateRange={project.dateRange} data-aos='fade-n-flip-left' data-aos-delay={(100 * idx).toString()} />
             ))}
         </div>
     </section>

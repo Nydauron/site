@@ -133,7 +133,7 @@ const projects: {
                 Software Engineer and Developer
             </p>
 	</main>
-    <section id="about" class="w-[60vw] flex h-screen flex-col gap-8 items-center justify-center text-center lg:flex-row mx-auto">
+    <section id="about" class="w-[60vw] flex min-h-screen flex-col gap-8 items-center justify-center text-center lg:flex-row mx-auto">
         <div class="lg:basis-1/2 flex flex-col items-center justify-center" data-aos="fade-right" data-aos-duration="1000">
             <h2 class="text-4xl text-teal-500 dark:text-teal-400 my-10">
                 A bit about myself
@@ -145,7 +145,7 @@ const projects: {
             I graduted from the University of Illinois with a Bachelors in Computer Science.
         </p>
     </section>
-    <section id="projects" class="flex flex-col h-screen items-center justify-center text-center ml-32 mr-32">
+    <section id="projects" class="flex flex-col min-h-screen items-center justify-center text-center lg:ml-32 lg:mr-32">
         <h2 class="text-4xl text-teal-500 dark:text-teal-400 m-10" data-aos="fade-up">
             Projects I've made
         </h2>
@@ -154,7 +154,7 @@ const projects: {
                  <ProjectCard projectName={project.name} projectImgSrc={project.image} synopsis={project.synopsis} links={project.links} tags={project.tags} dateRange={project.dateRange} data-aos='fade-n-flip-left' data-aos-delay={(100 * idx).toString()} />
              ))}
          </div>
-         <h2 class="text-4xl text-teal-500 dark:text-teal-400 m-10" data-aos="fade-up">
+         <h2 class="text-4xl text-teal-500 dark:text-teal-400 my-10" data-aos="fade-up">
              Other open source projects I've worked on
          </h2>
          <div class="flex flex-wrap justify-center gap-2 text-center lg:flex-row">
@@ -163,7 +163,7 @@ const projects: {
              ))}
          </div>
     </section>
-    <div class="h-screen flex flex-col items-center justify-center">
+    <div class="min-h-screen flex flex-col items-center justify-center">
         <h2 id="contact" class="text-4xl text-center text-teal-400">My contact information</h2>
         <Footer />
     </div>

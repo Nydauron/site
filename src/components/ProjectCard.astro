@@ -42,9 +42,9 @@ const projectImg = projectImgSrc !== undefined ? await getImage({src: projectImg
         }
         <div class="flex flex-row items-center justify-between">
             <div class="flex flex-row items-center justify-start flex-wrap gap-2">
-                {links.map((link) => (<a class="block w-fit" href={getNormalizedLink(link)} target={link.type === "internal" ? "_self" : "_blank"}><ProjectLinkIcon link={link}/></a>))}
+                {links.map((link) => (<a class="block w-fit flex-shrink-0" href={getNormalizedLink(link)} target={link.type === "internal" ? "_self" : "_blank"}><ProjectLinkIcon link={link}/></a>))}
             </div>
-            <div class="text-gray-800 dark:text-gray-300">
+            <div class="basis-1/2 grow text-gray-800 dark:text-gray-300">
                 {getDateRangeString(dateRange)}
             </div>
         </div>

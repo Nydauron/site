@@ -1,21 +1,74 @@
 ---
-import Prose from '../components/Prose.astro';
-import Layout from './Layout.astro';
-import Footer from '../components/Footer.astro';
+import Prose from "../components/Prose.astro";
+import Footer from "../components/Footer.astro";
+import Nav from "../components/Nav.astro";
+import type { MarkdownLayoutProps } from "astro";
 
-export interface Props {
-    title: string;
-}
+type Props = MarkdownLayoutProps<{
+  // Define frontmatter props here
+  title: string;
+  author: string;
+  date: string;
+}>;
 
-const { title } = Astro.props;
+const { frontmatter } = Astro.props;
 ---
-<Layout title={title}>
+
+<html lang="en" class="scroll-smooth scroll-pt-20 snap-y">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="og:title" content={frontmatter.title} />
+    <meta name="og:type" content="article" />
+    <meta name="og:article:author" content={frontmatter.author} />
+    <title>{frontmatter.title}</title>
+  </head>
+  <body class="bg-zinc-100 dark:bg-black dark:text-white min-h-screen">
+    <Nav />
     <main class="flex flex-col items-center p-8">
-    <section class="bg-slate-200 dark:bg-slate-900 shadow-gray-900 dark:shadow-gray-200 shadow-xl lg:w-[60vw] md:w-[80vw] p-8">
+      <section
+        class="bg-slate-200 dark:bg-slate-900 shadow-gray-900 dark:shadow-gray-200 shadow-xl lg:w-[60vw] md:w-[80vw] p-8"
+      >
         <Prose>
-            <slot />
+          <slot />
         </Prose>
-    </section>
+      </section>
     </main>
     <Footer />
-</Layout>
+  </body>
+</html>
+<style is:global>
+  :root {
+    --accent: 0, 204, 153;
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent)),
+      #00997a 30%,
+      black 60%
+    );
+    --accent-gradient-dark: linear-gradient(
+      45deg,
+      rgb(var(--accent)),
+      #4dffdb 30%,
+      white 60%
+    );
+  }
+  html {
+    font-family: "Fira Mono", system-ui, sans-serif;
+    background-color: #f6f6f6;
+  }
+  code {
+    font-family:
+      Menlo,
+      Monaco,
+      Lucida Console,
+      Liberation Mono,
+      DejaVu Sans Mono,
+      Bitstream Vera Sans Mono,
+      Courier New,
+      monospace;
+  }
+</style>

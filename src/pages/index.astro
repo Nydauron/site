@@ -138,7 +138,7 @@ const projects: {
     data-aos-duration="1000"
   >
     <h1 id="name-typing" class="text-center text-8xl m-10 font-medium">
-      <span></span><span class="text-gradient"></span>
+      <span></span><span id="my-name" class="text-gradient"></span>
     </h1>
     <p id="subtitle-typing" class="text-center text-4xl"></p>
   </main>
@@ -249,13 +249,15 @@ const projects: {
         )
       );
     }
-    > span:nth-child(2) {
-      @include typed("Jareth",
+    > span#my-name {
+      @include typed(
+        "Nyda",
         null,
         (
           delay: 2,
-          iterations: 0,
-          caret: false
+          iterations: 1,
+          end-on: "Jareth",
+          caret: false,
         )
       );
     }
@@ -265,9 +267,11 @@ const projects: {
       "Software Engineer",
       "Open source advocate",
       "Vim enthusiast",
-      null,
       (
-        delay: 4,
+        delete: 0.05,
+      ),
+      (
+        delay: 8,
       )
     );
   }

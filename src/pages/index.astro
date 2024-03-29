@@ -1,12 +1,12 @@
 ---
 import "../typed.scss";
-import 'aos/dist/aos.css';
-import Layout from '../layouts/Layout.astro';
-import Footer from '../components/Footer.astro';
-import ProjectCard from '../components/ProjectCard.astro';
+import "aos/dist/aos.css";
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+import ProjectCard from "../components/ProjectCard.astro";
 
-import { Image } from 'astro:assets';
-import Portait from '../portrait.jpg';
+import { Image } from "astro:assets";
+import Portait from "../portrait.jpg";
 
 import CharbotLogo from "../charbot-icon.jpg";
 import FourPlayerChessLogo from "../four-player-chess-icon.png";
@@ -14,236 +14,300 @@ import PiBotLogo from "../pi-bot-logo.png";
 import HackIllinois2023Logo from "../hackillinois-2023.jpg";
 
 const projects: {
-    personal: Project[],
-    other: Project[]
+  personal: Project[];
+  other: Project[];
 } = {
-        personal: [
-            {
-                name: "playing-cards",
-                image: undefined,
-                dateRange: {
-                    start: "Aug 2022",
-                    end: null,
-                },
-                synopsis: "A poker evaluation library written in Rust",
-                tags: ["rust", "poker", "library"],
-                links: [
-                    {
-                        type: "github",
-                        repo: "Nydauron/playing-cards",
-                    },
-                ],
-            },
-            {
-                name: "CharBot",
-                dateRange: {
-                    start: "Jul 2018",
-                    end: "Aug 2019",
-                },
-                image: CharbotLogo,
-                synopsis: "A Discord bot written using discord.js that roast users on command",
-                tags: ["javascript", "bot", "discordjs"],
-                links: [
-                    {
-                        type: "github",
-                        repo: "Nydauron/CharBot",
-                    },
-                ],
-            },
-            {
-                name: "Four player chess",
-                image: FourPlayerChessLogo,
-                dateRange: {
-                    start: "Feb 2017",
-                    end: "May 2017",
-                },
-                synopsis: "A client-server game created in Java",
-                tags: ["java", "javax", "network"],
-                links: [
-                    {
-                        type: "internal",
-                        path: "/projects/four-player-chess",
-                    },
-                ],
-            },
-        ],
-    other: [
-            {
-                name: "JsSpim",
-                image: undefined,
-                dateRange: {
-                    start: "Jan 2022",
-                    end: "May 2023",
-                },
-                synopsis: "A WASM-based MIPS simulator written in C++ using the SPIM library that runs in the browser",
-                tags: ["c++", "wasm", "mips", "assembly", "simulation"],
-                links: [
-                    {
-                        type: "github",
-                        repo: "cs233/JsSpim",
-                    },
-                    {
-                        type: "general",
-                        href: "https://cs233.github.io/JsSpim/"
-                    }
-                ],
-            },
-            {
-                name: "HackIllinois API",
-                image: HackIllinois2023Logo,
-                dateRange: {
-                    start: "Oct 2021",
-                    end: "Feb 2023",
-                },
-                synopsis: "A Go microservice API supporting the HackIllinois website, iOS, and Android apps",
-                tags: ["go", "api", "aws", "mongodb"],
-                links: [
-                    {
-                        type: "github",
-                        repo: "HackIllinois/api",
-                    },
-                ],
-            },
-            {
-                name: "pi-bot",
-                image: PiBotLogo,
-                dateRange: {
-                    start: "Sept 2020",
-                    end: "Jul 2021",
-                },
-                synopsis: "Scioly.org's resident Discord bot written in Discord.py",
-                tags: ["python", "bot", "discordpy"],
-                links: [
-                    {
-                        type: "github",
-                        repo: "cbrxyz/pi-bot",
-                    }
-                ],
-            }
-        ]
-    };
+  personal: [
+    {
+      name: "playing-cards",
+      image: undefined,
+      dateRange: {
+        start: "Aug 2022",
+        end: null,
+      },
+      synopsis: "A poker evaluation library written in Rust",
+      tags: ["rust", "poker", "library"],
+      links: [
+        {
+          type: "github",
+          repo: "Nydauron/playing-cards",
+        },
+      ],
+    },
+    {
+      name: "CharBot",
+      dateRange: {
+        start: "Jul 2018",
+        end: "Aug 2019",
+      },
+      image: CharbotLogo,
+      synopsis:
+        "A Discord bot written using discord.js that roast users on command",
+      tags: ["javascript", "bot", "discordjs"],
+      links: [
+        {
+          type: "github",
+          repo: "Nydauron/CharBot",
+        },
+      ],
+    },
+    {
+      name: "Four player chess",
+      image: FourPlayerChessLogo,
+      dateRange: {
+        start: "Feb 2017",
+        end: "May 2017",
+      },
+      synopsis: "A client-server game created in Java",
+      tags: ["java", "javax", "network"],
+      links: [
+        {
+          type: "internal",
+          path: "/projects/four-player-chess",
+        },
+      ],
+    },
+  ],
+  other: [
+    {
+      name: "JsSpim",
+      image: undefined,
+      dateRange: {
+        start: "Jan 2022",
+        end: "May 2023",
+      },
+      synopsis:
+        "A WASM-based MIPS simulator written in C++ using the SPIM library that runs in the browser",
+      tags: ["c++", "wasm", "mips", "assembly", "simulation"],
+      links: [
+        {
+          type: "github",
+          repo: "cs233/JsSpim",
+        },
+        {
+          type: "general",
+          href: "https://cs233.github.io/JsSpim/",
+        },
+      ],
+    },
+    {
+      name: "HackIllinois API",
+      image: HackIllinois2023Logo,
+      dateRange: {
+        start: "Oct 2021",
+        end: "Feb 2023",
+      },
+      synopsis:
+        "A Go microservice API supporting the HackIllinois website, iOS, and Android apps",
+      tags: ["go", "api", "aws", "mongodb"],
+      links: [
+        {
+          type: "github",
+          repo: "HackIllinois/api",
+        },
+      ],
+    },
+    {
+      name: "pi-bot",
+      image: PiBotLogo,
+      dateRange: {
+        start: "Sept 2020",
+        end: "Jul 2021",
+      },
+      synopsis: "Scioly.org's resident Discord bot written in Discord.py",
+      tags: ["python", "bot", "discordpy"],
+      links: [
+        {
+          type: "github",
+          repo: "cbrxyz/pi-bot",
+        },
+      ],
+    },
+  ],
+};
 ---
+
 <Layout title="Jareth Gomes - Software Developer">
-    <script>
-        import AOS from 'aos';
-        AOS.init();
-    </script>
-    <main class="mr-10 ml-10 flex h-screen flex-col items-center justify-center text-center" data-aos="fade-up" data-aos-duration="1000">
-            <h1 id="name-typing" class="text-center text-8xl m-10 font-medium"><span></span><span class="text-gradient"></span></h1>
-            <p id="subtitle-typing" class="text-center text-4xl">
-            </p>
-    </main>
-    <section id="about" class="w-[60vw] flex min-h-screen flex-col gap-8 snap-center items-center justify-center text-center lg:flex-row mx-auto">
-        <div class="lg:basis-1/2 flex flex-col items-center justify-center" data-aos="fade-right" data-aos-duration="1000">
-            <h2 class="text-4xl text-teal-500 dark:text-teal-400 my-10">
-                A bit about myself
-            </h2>
-            <Image src={Portait} alt="A protrait of Jareth" width={300}/>
-        </div>
-        <p class="basis-1/2 text-xl" data-aos="fade-up" data-aos-duration="1000">
-            I am a full stack developer from Chicago that specializes in backends and cybersecurity.
-            I graduted from the University of Illinois with a Bachelors in Computer Science.
-        </p>
-    </section>
-    <section id="projects" class="flex flex-col min-h-screen snap-start items-center justify-center text-center lg:ml-32 lg:mr-32">
-        <h2 class="text-4xl text-teal-500 dark:text-teal-400 m-10" data-aos="fade-up">
-            Projects I've made
-        </h2>
-        <div class="flex flex-wrap justify-center gap-2 text-center lg:flex-row">
-             {projects.personal.map((project, idx) => (
-                 <ProjectCard projectName={project.name} projectImgSrc={project.image} synopsis={project.synopsis} links={project.links} tags={project.tags} dateRange={project.dateRange} data-aos='fade-n-flip-left' data-aos-delay={(100 * idx).toString()} />
-             ))}
-         </div>
-         <h2 class="text-4xl text-teal-500 dark:text-teal-400 my-10" data-aos="fade-up">
-             Other open source projects I've worked on
-         </h2>
-         <div class="flex flex-wrap justify-center gap-2 text-center lg:flex-row">
-             {projects.other.map((project, idx) => (
-                 <ProjectCard projectName={project.name} projectImgSrc={project.image} synopsis={project.synopsis} links={project.links} tags={project.tags} dateRange={project.dateRange} data-aos='fade-n-flip-left' data-aos-delay={(100 * idx).toString()} />
-             ))}
-         </div>
-    </section>
-    <div class="min-h-screen flex flex-col items-center justify-center">
-        <h2 id="contact" class="text-4xl text-center text-teal-400">My contact information</h2>
-        <Footer />
+  <script>
+    import AOS from "aos";
+    AOS.init();
+  </script>
+  <main
+    class="mr-10 ml-10 flex h-screen flex-col items-center justify-center text-center"
+    data-aos="fade-up"
+    data-aos-duration="1000"
+  >
+    <h1 id="name-typing" class="text-center text-8xl m-10 font-medium">
+      <span></span><span class="text-gradient"></span>
+    </h1>
+    <p id="subtitle-typing" class="text-center text-4xl"></p>
+  </main>
+  <section
+    id="about"
+    class="w-[60vw] flex min-h-screen flex-col gap-8 snap-center items-center justify-center text-center lg:flex-row mx-auto"
+  >
+    <div
+      class="lg:basis-1/2 flex flex-col items-center justify-center"
+      data-aos="fade-right"
+      data-aos-duration="1000"
+    >
+      <h2 class="text-4xl text-teal-500 dark:text-teal-400 my-10">
+        A bit about myself
+      </h2>
+      <Image src={Portait} alt="A protrait of Jareth" width={300} />
     </div>
+    <p class="basis-1/2 text-xl" data-aos="fade-up" data-aos-duration="1000">
+      I am a full stack developer from Chicago that specializes in backends and
+      cybersecurity. I graduted from the University of Illinois with a Bachelors
+      in Computer Science.
+    </p>
+  </section>
+  <section
+    id="projects"
+    class="flex flex-col min-h-screen snap-start items-center justify-center text-center lg:ml-32 lg:mr-32"
+  >
+    <h2
+      class="text-4xl text-teal-500 dark:text-teal-400 m-10"
+      data-aos="fade-up"
+    >
+      Projects I've made
+    </h2>
+    <div class="flex flex-wrap justify-center gap-2 text-center lg:flex-row">
+      {
+        projects.personal.map((project, idx) => (
+          <ProjectCard
+            projectName={project.name}
+            projectImgSrc={project.image}
+            synopsis={project.synopsis}
+            links={project.links}
+            tags={project.tags}
+            dateRange={project.dateRange}
+            data-aos="fade-n-flip-left"
+            data-aos-delay={(100 * idx).toString()}
+          />
+        ))
+      }
+    </div>
+    <h2
+      class="text-4xl text-teal-500 dark:text-teal-400 my-10"
+      data-aos="fade-up"
+    >
+      Other open source projects I've worked on
+    </h2>
+    <div class="flex flex-wrap justify-center gap-2 text-center lg:flex-row">
+      {
+        projects.other.map((project, idx) => (
+          <ProjectCard
+            projectName={project.name}
+            projectImgSrc={project.image}
+            synopsis={project.synopsis}
+            links={project.links}
+            tags={project.tags}
+            dateRange={project.dateRange}
+            data-aos="fade-n-flip-left"
+            data-aos-delay={(100 * idx).toString()}
+          />
+        ))
+      }
+    </div>
+  </section>
+  <div class="min-h-screen flex flex-col items-center justify-center">
+    <h2 id="contact" class="text-4xl text-center text-teal-400">
+      My contact information
+    </h2>
+    <Footer />
+  </div>
 </Layout>
 
 <style lang="scss">
-    @import "../typed";
-    [data-aos="fade-n-flip-left"] {
-        opacity: 0;
-        transition-property: transform, opacity;
+  @import "../typed";
+  [data-aos="fade-n-flip-left"] {
+    opacity: 0;
+    transition-property: transform, opacity;
 
-        &.aos-animate {
-            opacity: 1;
-        }
-
-        @media screen and (min-width: 768px) {
-            transform: scaleX(0);
-
-            &.aos-animate {
-                transform: scaleX(1);
-            }
-        }
+    &.aos-animate {
+      opacity: 1;
     }
 
-    #name-typing {
-        > span:first-child {
-            @include typed("Hello! I'm ", null, (caret: false, iterations: 0));
-        }
-        > span:nth-child(2) {
-            @include typed("Jareth", null, (delay: 2, iterations: 0, caret: false));
-        }
+    @media screen and (min-width: 768px) {
+      transform: scaleX(0);
+
+      &.aos-animate {
+        transform: scaleX(1);
+      }
     }
-    #subtitle-typing {
-        @include typed(
-            "Software Engineer",
-            "Open source advocate",
-            "Vim enthusiast",
-            null,
-            (
-                delay: 4,
-            )
-        );
+  }
+
+  #name-typing {
+    > span:first-child {
+      @include typed(
+        "Hello! I'm ",
+        null,
+        (
+          caret: false,
+          iterations: 0,
+        )
+      );
     }
+    > span:nth-child(2) {
+      @include typed("Jareth",
+        null,
+        (
+          delay: 2,
+          iterations: 0,
+          caret: false
+        )
+      );
+    }
+  }
+  #subtitle-typing {
+    @include typed(
+      "Software Engineer",
+      "Open source advocate",
+      "Vim enthusiast",
+      null,
+      (
+        delay: 4,
+      )
+    );
+  }
 </style>
 <style>
+  .text-gradient {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
+  @media (prefers-color-scheme: dark) {
     .text-gradient {
-        background-image: var(--accent-gradient);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-size: 400%;
-        background-position: 0%;
+      background-image: var(--accent-gradient-dark);
     }
-    @media (prefers-color-scheme: dark) {
-        .text-gradient {
-            background-image: var(--accent-gradient-dark);
-        }
-    }
-    .instructions {
-        line-height: 1.6;
-        margin: 1rem 0;
-        border: 1px solid rgba(var(--accent), 25%);
-        background-color: white;
-        padding: 1rem;
-        border-radius: 0.4rem;
-    }
-    .instructions code {
-        font-size: 0.875em;
-        font-weight: bold;
-        background: rgba(var(--accent), 12%);
-        color: rgb(var(--accent));
-        border-radius: 4px;
-        padding: 0.3em 0.45em;
-    }
-    .instructions strong {
-        color: rgb(var(--accent));
-    }
-    .link-card-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-        gap: 1rem;
-        padding: 0;
-    }
+  }
+  .instructions {
+    line-height: 1.6;
+    margin: 1rem 0;
+    border: 1px solid rgba(var(--accent), 25%);
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.4rem;
+  }
+  .instructions code {
+    font-size: 0.875em;
+    font-weight: bold;
+    background: rgba(var(--accent), 12%);
+    color: rgb(var(--accent));
+    border-radius: 4px;
+    padding: 0.3em 0.45em;
+  }
+  .instructions strong {
+    color: rgb(var(--accent));
+  }
+  .link-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    gap: 1rem;
+    padding: 0;
+  }
 </style>
